@@ -157,3 +157,26 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+function sendMail() {
+  let params = {
+    name: document.getElementById("fullname").value,
+    email: document.getElementById("email").value,
+    subject: document.getElementById("subject").value,
+    message: document.getElementById("message").value,
+  };
+
+  emailjs
+    .send("service_mcqdcm7", "template_en7uyv7", params)
+    .then(function (res) {
+      alert("Email Sent!! ✅");
+
+      form.reset();
+
+      console.log("Success:", res.status, res.text);
+    })
+    .catch(function (err) {
+      alert("Failed to send ❌, check console.");
+      console.error("Error:", err);
+    });
+}
