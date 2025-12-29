@@ -1,6 +1,104 @@
 'use strict';
 
+/*-----------------------------------*\
+  #ANIMATION SYSTEM
+\*-----------------------------------*/
 
+// Page Loader
+window.addEventListener('load', function() {
+  const loader = document.getElementById('pageLoader');
+  // Minimum display time of 800ms for smooth experience
+  setTimeout(() => {
+    loader.classList.add('fade-out');
+    // Remove from DOM after transition
+    setTimeout(() => {
+      loader.style.display = 'none';
+    }, 500);
+  }, 800);
+});
+
+// Scroll Reveal Animation with Intersection Observer
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const scrollRevealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      // Optionally unobserve after revealing for performance
+      scrollRevealObserver.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+// Observe all scroll-reveal elements
+document.addEventListener('DOMContentLoaded', function() {
+  const revealElements = document.querySelectorAll('.scroll-reveal, .fade-left, .fade-right, .scale-up');
+  revealElements.forEach(el => scrollRevealObserver.observe(el));
+});
+
+// Navbar Scroll Effect
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', function() {
+  const currentScroll = window.pageYOffset;
+  
+  if (currentScroll > 100) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+  
+  lastScroll = currentScroll;
+});
+
+// Ripple Effect on Buttons
+document.addEventListener('click', function(e) {
+  const target = e.target;
+  if (target.tagName === 'BUTTON' || target.closest('button')) {
+    const button = target.tagName === 'BUTTON' ? target : target.closest('button');
+    const ripple = document.createElement('span');
+    const rect = button.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    ripple.classList.add('ripple');
+    
+    button.appendChild(ripple);
+    
+    setTimeout(() => ripple.remove(), 600);
+  }
+});
+
+// Skill Progress Bar Animation
+const skillObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const progressBar = entry.target;
+      const targetWidth = progressBar.style.width;
+      progressBar.style.setProperty('--target-width', targetWidth);
+      progressBar.classList.add('animated');
+      skillObserver.unobserve(progressBar);
+    }
+  });
+}, { threshold: 0.5 });
+
+// Observe skill progress bars
+document.addEventListener('DOMContentLoaded', function() {
+  const skillBars = document.querySelectorAll('.skill-progress-fill');
+  skillBars.forEach(bar => skillObserver.observe(bar));
+});
+
+/*-----------------------------------*\
+  #ORIGINAL FUNCTIONALITY
+\*-----------------------------------*/
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }

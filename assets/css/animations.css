@@ -1,0 +1,664 @@
+/*-----------------------------------*\
+  #ANIMATIONS.CSS - Interactive UI Animations
+\*-----------------------------------*/
+
+/**
+ * Modern interactive animations for portfolio website
+ * Includes: Page loader, scroll animations, micro-interactions,
+ * typing effects, and skeleton loaders
+ */
+
+/*-----------------------------------*\
+  #PAGE LOADER
+\*-----------------------------------*/
+
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--smoky-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.page-loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.loader-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 30px;
+    position: relative;
+    animation: logoPulse 1.5s ease-in-out infinite;
+}
+
+.loader-logo::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    background: var(--text-gradient-yellow);
+    filter: blur(20px);
+    opacity: 0.5;
+    animation: glow 2s ease-in-out infinite;
+}
+
+.loader-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--jet);
+    border-top-color: var(--orange-yellow-crayola);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto;
+}
+
+.loader-text {
+    color: var(--light-gray);
+    font-size: var(--fs-6);
+    margin-top: 20px;
+    letter-spacing: 2px;
+    animation: fadeInOut 1.5s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/*-----------------------------------*\
+  #SCROLL ANIMATIONS
+\*-----------------------------------*/
+
+/* Elements hidden by default, revealed on scroll */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fade in from left */
+.fade-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Fade in from right */
+.fade-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Scale up animation */
+.scale-up {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scale-up.revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger delays for list items */
+.stagger-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.stagger-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.stagger-item:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.stagger-item:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.stagger-item:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.stagger-item:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+.stagger-item:nth-child(7) {
+    transition-delay: 0.7s;
+}
+
+.stagger-item:nth-child(8) {
+    transition-delay: 0.8s;
+}
+
+/*-----------------------------------*\
+  #ENHANCED CARD ANIMATIONS
+\*-----------------------------------*/
+
+.service-item,
+.project-item,
+.timeline-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover,
+.project-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px hsla(0, 0%, 0%, 0.35);
+}
+
+.service-item::after,
+.project-item::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--orange-yellow-crayola), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -2;
+    filter: blur(10px);
+}
+
+.service-item:hover::after,
+.project-item:hover::after {
+    opacity: 0.3;
+}
+
+/* Icon animations */
+.service-icon-box,
+.project-item-icon-box {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.service-item:hover .service-icon-box,
+.project-item:hover .project-item-icon-box {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/*-----------------------------------*\
+  #BUTTON ANIMATIONS
+\*-----------------------------------*/
+
+.form-btn,
+.navbar-link,
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ripple effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Button hover gradient shift */
+.form-btn {
+    background: var(--border-gradient-onyx);
+    transition: all 0.3s ease;
+}
+
+.form-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px hsla(45, 100%, 72%, 0.3);
+}
+
+.form-btn:active {
+    transform: translateY(0);
+}
+
+/* Navbar link underline animation */
+.navbar-link {
+    position: relative;
+}
+
+.navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--text-gradient-yellow);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar-link:hover::after,
+.navbar-link.active::after {
+    width: 100%;
+    left: 0;
+}
+
+/*-----------------------------------*\
+  #TYPING ANIMATION
+\*-----------------------------------*/
+
+.typing-text {
+    position: relative;
+    display: inline-block;
+}
+
+.typing-text::after {
+    content: '|';
+    position: absolute;
+    right: -5px;
+    color: var(--orange-yellow-crayola);
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Character reveal animation */
+.typing-text span {
+    opacity: 0;
+    animation: charReveal 0.1s ease forwards;
+}
+
+@keyframes charReveal {
+    to {
+        opacity: 1;
+    }
+}
+
+/*-----------------------------------*\
+  #SKILL PROGRESS BAR ANIMATIONS
+\*-----------------------------------*/
+
+.skill-progress-fill {
+    width: 0 !important;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-progress-fill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    to {
+        left: 100%;
+    }
+}
+
+.skill-progress-fill.animated {
+    width: var(--target-width) !important;
+}
+
+/*-----------------------------------*\
+  #SKELETON LOADERS
+\*-----------------------------------*/
+
+.skeleton {
+    background: var(--eerie-black-2);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.05),
+            transparent);
+    animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+    to {
+        left: 100%;
+    }
+}
+
+.skeleton-text {
+    height: 16px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.skeleton-title {
+    height: 24px;
+    margin-bottom: 12px;
+    width: 60%;
+}
+
+.skeleton-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+/*-----------------------------------*\
+  #NAVBAR SCROLL EFFECTS
+\*-----------------------------------*/
+
+.navbar {
+    transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: hsla(240, 1%, 17%, 0.9);
+    box-shadow: var(--shadow-3);
+    backdrop-filter: blur(20px);
+}
+
+/*-----------------------------------*\
+  #PARALLAX EFFECTS
+\*-----------------------------------*/
+
+.parallax-bg {
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+/*-----------------------------------*\
+  #PARTICLE BACKGROUND
+\*-----------------------------------*/
+
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.1;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--orange-yellow-crayola);
+    border-radius: 50%;
+    animation: float linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) translateX(var(--drift, 0));
+        opacity: 0;
+    }
+}
+
+/*-----------------------------------*\
+  #IMAGE LAZY LOAD EFFECTS
+\*-----------------------------------*/
+
+img[data-lazy] {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+img[data-lazy].loaded {
+    opacity: 1;
+}
+
+/*-----------------------------------*\
+  #SMOOTH SCROLL
+\*-----------------------------------*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Smooth scroll for browsers that don't support scroll-behavior */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/*-----------------------------------*\
+  #HOVER GLOW EFFECTS
+\*-----------------------------------*/
+
+.glow-on-hover {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.glow-on-hover::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--orange-yellow-crayola), var(--vegas-gold));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    filter: blur(8px);
+}
+
+.glow-on-hover:hover::before {
+    opacity: 0.5;
+}
+
+/*-----------------------------------*\
+  #CONTACT INFO ICONS ANIMATION
+\*-----------------------------------*/
+
+.contact-item {
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateX(5px);
+}
+
+.contact-item .icon-box {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.contact-item:hover .icon-box {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/*-----------------------------------*\
+  #SOCIAL LINKS ANIMATION
+\*-----------------------------------*/
+
+.social-link {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-block;
+}
+
+.social-link:hover {
+    transform: translateY(-3px) scale(1.1);
+    color: var(--orange-yellow-crayola);
+}
+
+/*-----------------------------------*\
+  #ACCESSIBILITY - REDUCED MOTION
+\*-----------------------------------*/
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .page-loader {
+        display: none !important;
+    }
+}
+
+/*-----------------------------------*\
+  #MOBILE OPTIMIZATIONS
+\*-----------------------------------*/
+
+@media (max-width: 768px) {
+
+    /* Simplify animations on mobile */
+    .service-item:hover,
+    .project-item:hover {
+        transform: translateY(-4px);
+    }
+
+    /* Disable parallax on mobile */
+    .parallax-bg {
+        transform: none !important;
+    }
+
+    /* Reduce particle count */
+    .particles {
+        display: none;
+    }
+}
+
+/*-----------------------------------*\
+  #PERFORMANCE OPTIMIZATIONS
+\*-----------------------------------*/
+
+/* Use GPU acceleration for animations */
+.scroll-reveal,
+.fade-left,
+.fade-right,
+.scale-up,
+.service-item,
+.project-item,
+.form-btn,
+.navbar-link {
+    will-change: transform, opacity;
+}
+
+/* Remove will-change after animation completes */
+.revealed {
+    will-change: auto;
+}

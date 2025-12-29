@@ -81,6 +81,7 @@
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/toast.css">
+  <link rel="stylesheet" href="./assets/css/animations.css">
 
   <!--
     - google font link
@@ -100,6 +101,17 @@
 </head>
 
 <body>
+
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <img src="./assets/images/logo.png" alt="Loading">
+      </div>
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Loading...</div>
+    </div>
+  </div>
 
   <!-- Toast Notification Container -->
   <div class="toast-container" id="toastContainer"></div>
@@ -292,11 +304,11 @@
 
       <article class="about  active" data-page="about">
 
-        <header>
+        <header class="scroll-reveal">
           <h2 class="h2 article-title">About me</h2>
         </header>
 
-        <section class="about-text">
+        <section class="about-text scroll-reveal">
           <p>
             Let me introduce myself, <br>
           </p>
@@ -319,7 +331,7 @@
 
           <p>
             Beyond engineering, I enjoy experimenting with emerging observability practices, contributing to technical
-            communities, and exploring innovative approaches to platform reliability. A perpetual learner at heart, I’m
+            communities, and exploring innovative approaches to platform reliability. A perpetual learner at heart, I'm
             on a mission to push the boundaries of observability, DevOps, and cloud-native engineering, while delivering
             impactful solutions to modern challenges.
           </p>
@@ -433,11 +445,11 @@
         </section> -->
         <section class="service">
 
-          <h3 class="h3 service-title">What I'm Doing</h3>
+          <h3 class="h3 service-title scroll-reveal">What I'm Doing</h3>
 
           <ul class="service-list">
 
-            <li class="service-item">
+            <li class="service-item scroll-reveal stagger-item">
               <div class="service-icon-box">
                 <img src="https://cdn-icons-png.freepik.com/256/12594/12594471.png?semt=ais_white_label"
                   alt="Observability icon" width="40">
@@ -451,7 +463,7 @@
               </div>
             </li>
 
-            <li class="service-item">
+            <li class="service-item scroll-reveal stagger-item">
               <div class="service-icon-box">
                 <img src="https://img.icons8.com/color/48/null/kubernetes.png" alt="Kubernetes icon" width="40">
               </div>
@@ -464,7 +476,7 @@
               </div>
             </li>
 
-            <li class="service-item">
+            <li class="service-item scroll-reveal stagger-item">
               <div class="service-icon-box">
                 <img
                   src="https://static.vecteezy.com/system/resources/thumbnails/041/309/918/small_2x/cloud-container-platform-as-a-service-paas-3d-icon-png.png"
@@ -479,7 +491,7 @@
               </div>
             </li>
 
-            <li class="service-item">
+            <li class="service-item scroll-reveal stagger-item">
               <div class="service-icon-box">
                 <img
                   src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-analytics-big-data-flaticons-lineal-color-flat-icons.png"
@@ -556,10 +568,10 @@
 
       <article class="resume" data-page="resume">
 
-        <header>
+        <header class="scroll-reveal">
           <h2 class="h2 article-title">Resume</h2>
         </header>
-        <section class="timeline">
+        <section class="timeline scroll-reveal">
 
           <div class="title-wrapper">
             <div class="icon-box">
@@ -594,7 +606,7 @@
           </ol>
 
         </section>
-        <section class="timeline">
+        <section class="timeline scroll-reveal">
 
           <div class="title-wrapper">
             <div class="icon-box">
@@ -649,13 +661,13 @@
 
 
 
-        <section class="skill">
+        <section class="skill scroll-reveal">
 
           <h3 class="h3 skills-title">My skills</h3>
 
           <ul class="skills-list content-card">
 
-            <li class="skills-item">
+            <li class="skills-item scroll-reveal stagger-item">
 
               <div class="title-wrapper">
                 <h5 class="h5">Elastic Stack | OpenTelemetry | Grafana</h5>
@@ -668,7 +680,7 @@
 
             </li>
 
-            <li class="skills-item">
+            <li class="skills-item scroll-reveal stagger-item">
 
               <div class="title-wrapper">
                 <h5 class="h5">AWS | Kubernetes | Docker | Linux (Ubuntu,RHEL) </h5>
@@ -681,7 +693,7 @@
 
             </li>
 
-            <li class="skills-item">
+            <li class="skills-item scroll-reveal stagger-item">
 
               <div class="title-wrapper">
                 <h5 class="h5">Terraform | Ansible | Jenkins</h5>
@@ -694,7 +706,7 @@
 
             </li>
 
-            <li class="skills-item">
+            <li class="skills-item scroll-reveal stagger-item">
 
               <div class="title-wrapper">
                 <h5 class="h5"> Python | NodeJs | Shell Scripting | SQL</h5>
@@ -707,7 +719,7 @@
 
             </li>
 
-            <li class="skills-item">
+            <li class="skills-item scroll-reveal stagger-item">
 
               <div class="title-wrapper">
                 <h5 class="h5">GIT | GitHub | Kafka | ClickHouse</h5>
@@ -898,11 +910,11 @@
 
       <article class="portfolio" data-page="portfolio">
 
-        <header>
+        <header class="scroll-reveal">
           <h2 class="h2 article-title">Portfolio</h2>
         </header>
 
-        <section class="projects">
+        <section class="projects scroll-reveal">
 
           <ul class="filter-list">
 
