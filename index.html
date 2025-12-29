@@ -5,7 +5,71 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theja Reddy - Personal Portfolio</title>
+
+  <!-- Primary Meta Tags -->
+  <title>Theja Reddy - Senior Software Engineer | Cloud & Observability Specialist</title>
+  <meta name="title" content="Theja Reddy - Senior Software Engineer | Cloud & Observability Specialist">
+  <meta name="description"
+    content="Senior Software Engineer specializing in cloud-native platforms, Kubernetes, Elastic Stack, and observability solutions. Building scalable, reliable systems at HCL Software.">
+  <meta name="keywords"
+    content="Software Engineer, Cloud Engineer, Kubernetes, Elastic Stack, OpenTelemetry, DevOps, Observability, Thejasekhar Reddy">
+  <meta name="author" content="Thejasekhar Reddy Gundlooru">
+  <meta name="theme-color" content="#1a1a1a">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thejaredd y1.github.io/ThejaSekharReddy.G/">
+  <meta property="og:title" content="Theja Reddy - Senior Software Engineer | Cloud & Observability Specialist">
+  <meta property="og:description"
+    content="Senior Software Engineer specializing in cloud-native platforms, Kubernetes, Elastic Stack, and observability solutions at HCL Software.">
+  <meta property="og:image" content="./assets/images/my-avatar.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://thejareddy1.github.io/ThejaSekharReddy.G/">
+  <meta property="twitter:title" content="Theja Reddy - Senior Software Engineer | Cloud & Observability Specialist">
+  <meta property="twitter:description"
+    content="Senior Software Engineer specializing in cloud-native platforms, Kubernetes, Elastic Stack, and observability solutions.">
+  <meta property="twitter:image" content="./assets/images/my-avatar.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://thejareddy1.github.io/ThejaSekharReddy.G/">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thejasekhar Reddy Gundlooru",
+    "alternateName": "Theja Reddy",
+    "url": "https://thejareddy1.github.io/ThejaSekharReddy.G/",
+    "image": "./assets/images/my-avatar.png",
+    "jobTitle": "Senior Software Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "HCL Software"
+    },
+    "birthDate": "2001-08-25",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sodum",
+      "addressRegion": "Andhra Pradesh",
+      "addressCountry": "India"
+    },
+    "email": "thejagundlooru@gmail.com",
+    "telephone": "+919347556116",
+    "sameAs": [
+      "https://www.linkedin.com/in/thejasekharreddy",
+      "https://github.com/ThejaReddy1",
+      "https://www.instagram.com/theja_reddy_theja/"
+    ],
+    "knowsAbout": ["Kubernetes", "Elastic Stack", "OpenTelemetry", "Docker", "AWS", "DevOps", "Cloud Computing", "Observability", "Istio"],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "RGM College Of Engineering & Technology"
+    }
+  }
+  </script>
 
   <!--
     - favicon
@@ -16,6 +80,7 @@
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/toast.css">
 
   <!--
     - google font link
@@ -23,19 +88,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
   </script>
   <script type="text/javascript">
-     (function(){
-        emailjs.init({
-          publicKey: "P4bDImOSqltCSXK97",
-        });
-     })();
+    (function () {
+      emailjs.init({
+        publicKey: "P4bDImOSqltCSXK97",
+      });
+    })();
   </script>
 </head>
 
 <body>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
 
   <!--
     - #MAIN
@@ -52,11 +120,11 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
+          <img src="./assets/images/my-avatar.png" alt="Thejasekhar Reddy" width="80">
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="Richard hanrick">Thejasekhar Reddy .G</h1>
+          <h1 class="name" title="Thejasekhar Reddy">Thejasekhar Reddy .G</h1>
 
           <p class="title">Senior Software Engineer at HCL Software</p>
         </div>
@@ -112,7 +180,7 @@
             <div class="contact-info">
               <p class="contact-title">Birthday</p>
 
-              <time datetime="2001-08-25">Augest 25, 2001</time>
+              <time datetime="2001-08-25">August 25, 2001</time>
             </div>
 
           </li>
@@ -193,7 +261,7 @@
             <button class="navbar-link" data-nav-link>Resume</button>
           </li>
 
-          
+
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Achievements</button>
           </li>
@@ -233,18 +301,27 @@
             Let me introduce myself, <br>
           </p>
           <p>
-            Hello there! I'm <font color="#24DDA6">Thejasekhar Reddy Gundlooru</font>, Lad with a <font color="#24DDA6">million</font> dreams.
+            Hello there! I'm <span class="highlight">Thejasekhar Reddy Gundlooru</span>, Lad with a <span
+              class="highlight">million</span> dreams.
           </p>
           <p>
-            A passionate Senior Software Engineer currently driving cloud-native innovations at HCLSoftware, Bengaluru. With a strong foundation in Computer Science and Engineering, I specialize in building observability-driven, scalable, and resilient platforms.
+            A passionate Senior Software Engineer currently driving cloud-native innovations at HCLSoftware, Bengaluru.
+            With a strong foundation in Computer Science and Engineering, I specialize in building observability-driven,
+            scalable, and resilient platforms.
           </p>
 
           <p>
-            My toolkit includes Elastic Stack, OpenTelemetry, Kubernetes, Docker, and Linux—technologies I use to craft end-to-end monitoring solutions, automate infrastructure, and optimize distributed systems. From deploying high-availability Kubernetes clusters to enabling predictive analytics with Elastic ML, I focus on delivering solutions that enhance visibility, reliability, and performance.
+            My toolkit includes Elastic Stack, OpenTelemetry, Kubernetes, Docker, and Linux—technologies I use to craft
+            end-to-end monitoring solutions, automate infrastructure, and optimize distributed systems. From deploying
+            high-availability Kubernetes clusters to enabling predictive analytics with Elastic ML, I focus on
+            delivering solutions that enhance visibility, reliability, and performance.
           </p>
 
           <p>
-            Beyond engineering, I enjoy experimenting with emerging observability practices, contributing to technical communities, and exploring innovative approaches to platform reliability. A perpetual learner at heart, I’m on a mission to push the boundaries of observability, DevOps, and cloud-native engineering, while delivering impactful solutions to modern challenges.
+            Beyond engineering, I enjoy experimenting with emerging observability practices, contributing to technical
+            communities, and exploring innovative approaches to platform reliability. A perpetual learner at heart, I’m
+            on a mission to push the boundaries of observability, DevOps, and cloud-native engineering, while delivering
+            impactful solutions to modern challenges.
           </p>
         </section>
 
@@ -258,17 +335,18 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <button class="h4 service-item-title" onclick="window.open('Thejasekhar-Reddy-Gundlooru.pdf')" >
+                <button class="h4 service-item-title" onclick="window.open('Thejasekhar-Reddy-Gundlooru.pdf')">
                   <img src="https://img.icons8.com/plasticine/100/null/resume.png
                 " alt="design icon" width="40">
                 </button>
-                
+
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title"><button class="h4 service-item-title" onclick="window.open('Thejasekhar-Reddy-Gundlooru.pdf')" > Resume (download)</button></h4>
+                <h4 class="h4 service-item-title"><button class="h4 service-item-title"
+                    onclick="window.open('Thejasekhar-Reddy-Gundlooru.pdf')"> Resume (download)</button></h4>
               </div>
-        
+
             </li>
 
           </ul>
@@ -278,7 +356,7 @@
         <!--
           - service
         -->
-<!-- 
+        <!-- 
         <section class="service">
 
           <h3 class="h3 service-title">What i'm doing</h3>
@@ -358,61 +436,66 @@
           <h3 class="h3 service-title">What I'm Doing</h3>
 
           <ul class="service-list">
-          
+
             <li class="service-item">
               <div class="service-icon-box">
-                <img src="https://cdn-icons-png.freepik.com/256/12594/12594471.png?semt=ais_white_label" 
-                     alt="Observability icon" width="40">
+                <img src="https://cdn-icons-png.freepik.com/256/12594/12594471.png?semt=ais_white_label"
+                  alt="Observability icon" width="40">
               </div>
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Observability & Monitoring</h4>
                 <p class="service-item-text">
-                  Designing and implementing end-to-end observability solutions using Elastic Stack, OpenTelemetry, and Grafana for real-time visibility and proactive monitoring.
+                  Designing and implementing end-to-end observability solutions using Elastic Stack, OpenTelemetry, and
+                  Grafana for real-time visibility and proactive monitoring.
                 </p>
               </div>
             </li>
-          
+
             <li class="service-item">
               <div class="service-icon-box">
-                <img src="https://img.icons8.com/color/48/null/kubernetes.png" 
-                     alt="Kubernetes icon" width="40">
+                <img src="https://img.icons8.com/color/48/null/kubernetes.png" alt="Kubernetes icon" width="40">
               </div>
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Kubernetes Engineering</h4>
                 <p class="service-item-text">
-                  Building production-grade, high-availability Kubernetes clusters with HAProxy, Keepalived, and secure ingress, ensuring scalability and reliability.
+                  Building production-grade, high-availability Kubernetes clusters with HAProxy, Keepalived, and secure
+                  ingress, ensuring scalability and reliability.
                 </p>
               </div>
             </li>
-          
+
             <li class="service-item">
               <div class="service-icon-box">
-                <img src="https://static.vecteezy.com/system/resources/thumbnails/041/309/918/small_2x/cloud-container-platform-as-a-service-paas-3d-icon-png.png" 
-                     alt="cloud icon" width="40">
+                <img
+                  src="https://static.vecteezy.com/system/resources/thumbnails/041/309/918/small_2x/cloud-container-platform-as-a-service-paas-3d-icon-png.png"
+                  alt="cloud icon" width="40">
               </div>
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Cloud & Containerization</h4>
                 <p class="service-item-text">
-                  Delivering automated infrastructure solutions using Docker, AWS, and Terraform to streamline deployments and improve developer agility.
+                  Delivering automated infrastructure solutions using Docker, AWS, and Terraform to streamline
+                  deployments and improve developer agility.
                 </p>
               </div>
             </li>
-          
+
             <li class="service-item">
               <div class="service-icon-box">
-                <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-analytics-big-data-flaticons-lineal-color-flat-icons.png" 
-                     alt="Analytics icon" width="40">
+                <img
+                  src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-analytics-big-data-flaticons-lineal-color-flat-icons.png"
+                  alt="Analytics icon" width="40">
               </div>
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Log Analysis & Predictive Analytics</h4>
                 <p class="service-item-text">
-                  Building predictive log analytics workflows with Elastic ML for anomaly detection, forecasting, and proactive system resilience.
+                  Building predictive log analytics workflows with Elastic ML for anomaly detection, forecasting, and
+                  proactive system resilience.
                 </p>
               </div>
             </li>
-          
+
           </ul>
-        
+
         </section>
 
 
@@ -495,10 +578,15 @@
               <span>Mar 2024 - Present</span>
 
               <p class="timeline-text">
-                I’m a Senior Software Engineer specializing in cloud-native platforms and observability solutions. Over the years, I’ve designed and delivered production-grade Kubernetes clusters, predictive log analytics workflows with the Elastic Stack, and automated Elasticsearch provisioning for development environments. I also built a Kubernetes observability solution using OpenTelemetry, enabling holistic visibility for both applications and infrastructure.
+                I’m a Senior Software Engineer specializing in cloud-native platforms and observability solutions. Over
+                the years, I’ve designed and delivered production-grade Kubernetes clusters, predictive log analytics
+                workflows with the Elastic Stack, and automated Elasticsearch provisioning for development environments.
+                I also built a Kubernetes observability solution using OpenTelemetry, enabling holistic visibility for
+                both applications and infrastructure.
                 <br>
                 <br>
-                My toolkit includes Elastic Stack, OpenTelemetry, Kubernetes, Docker, and Linux, but what truly defines my work is transforming these technologies into scalable, reliable, and high-impact systems
+                My toolkit includes Elastic Stack, OpenTelemetry, Kubernetes, Docker, and Linux, but what truly defines
+                my work is transforming these technologies into scalable, reliable, and high-impact systems
               </p>
 
             </li>
@@ -525,7 +613,7 @@
               <span>2019 - 2023</span>
 
               <p class="timeline-text">
-                Bachelor’s Degree in Computer Science & Engineering(CSE) at 
+                Bachelor’s Degree in Computer Science & Engineering(CSE) at
                 Rajeev Gandhi Memorial College of Engineering and Technology - Nandyal, AndhraPradesh.
               </p>
 
@@ -559,7 +647,7 @@
 
         </section>
 
-        
+
 
         <section class="skill">
 
@@ -571,7 +659,7 @@
 
               <div class="title-wrapper">
                 <h5 class="h5">Elastic Stack | OpenTelemetry | Grafana</h5>
-                
+
               </div>
 
               <div class="skill-progress-bg">
@@ -584,7 +672,7 @@
 
               <div class="title-wrapper">
                 <h5 class="h5">AWS | Kubernetes | Docker | Linux (Ubuntu,RHEL) </h5>
-                
+
               </div>
 
               <div class="skill-progress-bg">
@@ -597,7 +685,7 @@
 
               <div class="title-wrapper">
                 <h5 class="h5">Terraform | Ansible | Jenkins</h5>
-                
+
               </div>
 
               <div class="skill-progress-bg">
@@ -610,7 +698,7 @@
 
               <div class="title-wrapper">
                 <h5 class="h5"> Python | NodeJs | Shell Scripting | SQL</h5>
-                
+
               </div>
 
               <div class="skill-progress-bg">
@@ -623,7 +711,7 @@
 
               <div class="title-wrapper">
                 <h5 class="h5">GIT | GitHub | Kafka | ClickHouse</h5>
-                
+
               </div>
 
               <div class="skill-progress-bg">
@@ -639,35 +727,36 @@
       </article>
 
 
-<!--
+      <!--
   - #ACHIEVEMENTS
 -->
 
       <article class="achievements" data-page="achievements">
-      
+
         <header>
           <h2 class="h2 article-title">Achievements & Certifications</h2>
         </header>
-      
+
         <section class="projects">
-        
+
           <ul class="filter-list">
             <li class="filter-item">
               <button class="active"> Check Out My Achievements </button>
             </li>
           </ul>
-        
+
           <div class="filter-select-box">
             <button class="filter-select" data-select>
               <div class="select-value" data-selecct-value>Check Out My Achievements</div>
             </button>
           </div>
-        
+
           <ul class="project-list">
-          
+
             <!-- Credly Badge -->
             <li class="project-item active" data-filter-item data-category="credly">
-              <a href="https://www.credly.com/badges/aa38a266-fa53-4f88-8d41-5ae0a792b2b8/public_url" target="_blank" rel="noopener">
+              <a href="https://www.credly.com/badges/aa38a266-fa53-4f88-8d41-5ae0a792b2b8/public_url" target="_blank"
+                rel="noopener noreferrer">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="ribbon-outline"></ion-icon>
@@ -675,11 +764,39 @@
                   <img src="./assets/images/Otel.png" alt="Credly Badge" loading="lazy">
                 </figure>
                 <h3 class="project-title">OpenTelemetry</h3>
-                <p class="project-category">Linux Foundation</p>
+                <p class="project-category">The Linux Foundation</p>
               </a>
             </li>
             <li class="project-item active" data-filter-item data-category="credly">
-              <a href="https://www.credly.com/badges/67df27e4-d949-4615-a449-493850ab6d2a/public_url" target="_blank" rel="noopener">
+              <a href="https://www.credly.com/badges/e2c96211-d3cf-4c02-a89a-cebdbadc7c45/public_url" target="_blank"
+                rel="noopener noreferrer">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="ribbon-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/istio.png" alt="Credly Badge" loading="lazy">
+                </figure>
+                <h3 class="project-title">Istio</h3>
+                <p class="project-category">The Linux Foundation</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="credly">
+              <a href="https://www.credly.com/badges/3e56f44d-7078-4573-aeee-48f4033d79da/public_url" target="_blank"
+                rel="noopener noreferrer">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="ribbon-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/clickhouse-observability-professional.png" alt="Credly Badge"
+                    loading="lazy">
+                </figure>
+                <h3 class="project-title">ClickHouse Observability Professional</h3>
+                <p class="project-category">ClickHouse</p>
+              </a>
+            </li>
+            <li class="project-item active" data-filter-item data-category="credly">
+              <a href="https://www.credly.com/badges/67df27e4-d949-4615-a449-493850ab6d2a/public_url" target="_blank"
+                rel="noopener noreferrer">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="ribbon-outline"></ion-icon>
@@ -690,9 +807,10 @@
                 <p class="project-category">ClickHouse</p>
               </a>
             </li>
-          
+
             <li class="project-item active" data-filter-item data-category="credly">
-              <a href="https://www.credly.com/badges/27781336-4183-4f56-a7cb-3c426e20c48b/public_url" target="_blank" rel="noopener">
+              <a href="https://www.credly.com/badges/27781336-4183-4f56-a7cb-3c426e20c48b/public_url" target="_blank"
+                rel="noopener noreferrer">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="ribbon-outline"></ion-icon>
@@ -703,10 +821,11 @@
                 <p class="project-category">Amazon Web Services</p>
               </a>
             </li>
-            
-          <!-- Confluent Badge -->
+
+            <!-- Confluent Badge -->
             <li class="project-item active" data-filter-item data-category="Confluent">
-              <a href="https://certificates.confluent.io/ddae0c66-01cb-48f5-a7d8-5370d141a6ff#acc.SKvawC1u" target="_blank" rel="noopener">
+              <a href="https://certificates.confluent.io/ddae0c66-01cb-48f5-a7d8-5370d141a6ff#acc.SKvawC1u"
+                target="_blank" rel="noopener">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="ribbon-outline"></ion-icon>
@@ -720,7 +839,8 @@
 
             <!-- O'Reilly Certificate -->
             <li class="project-item active" data-filter-item data-category="oreilly">
-              <a href="https://www.credly.com/badges/c2ea7d30-c16b-42f0-9cf7-eea9624c46e8/public_url" target="_blank" rel="noopener">
+              <a href="https://www.credly.com/badges/c2ea7d30-c16b-42f0-9cf7-eea9624c46e8/public_url" target="_blank"
+                rel="noopener noreferrer">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="ribbon-outline"></ion-icon>
@@ -732,7 +852,8 @@
               </a>
             </li>
             <li class="project-item active" data-filter-item data-category="oreilly">
-              <a href="https://www.credly.com/badges/d6ca87d5-fd20-443a-8851-f510e0f42b29/public_url" target="_blank" rel="noopener">
+              <a href="https://www.credly.com/badges/d6ca87d5-fd20-443a-8851-f510e0f42b29/public_url" target="_blank"
+                rel="noopener noreferrer">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="ribbon-outline"></ion-icon>
@@ -743,28 +864,29 @@
                 <p class="project-category">O’Reilly</p>
               </a>
             </li>
-          
-            
-          
+
+
+
             <!-- KodeKloud Badge -->
             <li class="project-item active" data-filter-item data-category="kodekloud">
-              <a href="https://learn.kodekloud.com/certificate/057a1f45-91a8-44bc-b961-b17a2081e965" target="_blank" rel="noopener">
+              <a href="https://learn.kodekloud.com/certificate/057a1f45-91a8-44bc-b961-b17a2081e965" target="_blank"
+                rel="noopener noreferrer">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="ribbon-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/kk_ckad.png" alt="KodeKloud Badge" loading="lazy">
                 </figure>
-                <h3 class="project-title">Kubernetes Application Devloper</h3>
+                <h3 class="project-title">Kubernetes Application Developer</h3>
                 <p class="project-category">KodeKloud</p>
               </a>
             </li>
-          
+
 
           </ul>
-        
+
         </section>
-      
+
       </article>
 
 
@@ -788,15 +910,15 @@
               <button class="active"> Check Out Some of My Projects </button>
             </li>
 
-            
+
 
           </ul>
 
           <div class="filter-select-box">
 
-             <button class="filter-select" data-select>
+            <button class="filter-select" data-select>
 
-               <div class="select-value" data-selecct-value>Check Out Some of My Projects</div>
+              <div class="select-value" data-selecct-value>Check Out Some of My Projects</div>
 
             </button>
           </div>
@@ -828,7 +950,7 @@
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-        
+
                   <img src="./assets/images/SEO.png" alt="orizon" loading="lazy">
                 </figure>
 
@@ -875,8 +997,9 @@
 
         <section class="mapbox" data-mapbox>
           <figure>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15515.758324831513!2d78.91750814999999!3d13.53929785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb2913fcaf3ce0b%3A0x37cecb5c5b9c6298!2sSadum%2C%20Andhra%20Pradesh%20517123!5e0!3m2!1sen!2sin!4v1680015634193!5m2!1sen!2sin" 
-            width="400" height="300" loading="lazy"></iframe>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15515.758324831513!2d78.91750814999999!3d13.53929785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb2913fcaf3ce0b%3A0x37cecb5c5b9c6298!2sSadum%2C%20Andhra%20Pradesh%20517123!5e0!3m2!1sen!2sin!4v1680015634193!5m2!1sen!2sin"
+              width="400" height="300" loading="lazy"></iframe>
           </figure>
         </section>
 
@@ -887,14 +1010,18 @@
           <form onsubmit="sendMail(event); return false;" class="form" data-form>
 
             <div class="input-wrapper">
-              <input type="text" name="fullname" id="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="text" name="fullname" id="fullname" class="form-input" placeholder="Full name" required
+                data-form-input>
 
-              <input type="email" name="email" id="email" class="form-input" placeholder="Email address" required data-form-input autocomplete="on">            
+              <input type="email" name="email" id="email" class="form-input" placeholder="Email address" required
+                data-form-input autocomplete="on">
             </div>
 
-            <input type="text" name="subject" id="subject" class="form-input" placeholder="Subject" required data-form-input>  
+            <input type="text" name="subject" id="subject" class="form-input" placeholder="Subject" required
+              data-form-input>
             <br>
-            <textarea name="message" id="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            <textarea name="message" id="message" class="form-input" placeholder="Your Message" required
+              data-form-input></textarea>
 
             <button class="form-btn" type="submit" data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>

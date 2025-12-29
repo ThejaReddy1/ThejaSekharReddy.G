@@ -158,7 +158,43 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
-function sendMail() {
+// Toast Notification System
+function showToast(message, title = '', type = 'info') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  
+  const icons = {
+    success: '✓',
+    error: '✕',
+    info: 'ℹ'
+  };
+  
+  toast.innerHTML = `
+    <div class="toast-icon">${icons[type] || icons.info}</div>
+    <div class="toast-content">
+      ${title ? `<div class="toast-title">${title}</div>` : ''}
+      <div class="toast-message">${message}</div>
+    </div>
+    <button class="toast-close" onclick="this.parentElement.classList.add('hide')" aria-label="Close">×</button>
+  `;
+  
+  container.appendChild(toast);
+  
+  // Trigger animation
+  setTimeout(() => toast.classList.add('show'), 10);
+  
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    toast.classList.remove('show');
+    toast.classList.add('hide');
+    setTimeout(() => toast.remove(), 300);
+  }, 5000);
+}
+
+function sendMail(event) {
+  event.preventDefault();
+  
   let params = {
     name: document.getElementById("fullname").value,
     email: document.getElementById("email").value,
@@ -166,17 +202,47 @@ function sendMail() {
     message: document.getElementById("message").value,
   };
 
+  // Add loading state to form
+  const formElement = document.querySelector("[data-form]");
+  const formBtn = document.querySelector("[data-form-btn]");
+  
+  formElement.classList.add("form-loading");
+  formBtn.setAttribute("disabled", "");
+
   emailjs
     .send("service_mcqdcm7", "template_en7uyv7", params)
     .then(function (res) {
-      alert("Email Sent!! ✅");
+      // Remove loading state
+      formElement.classList.remove("form-loading");
+      formBtn.removeAttribute("disabled");
+      
+      // Show success toast
+      showToast(
+        "Your message has been sent successfully! I'll get back to you soon.",
+        "Message Sent!",
+        "success"
+      );
 
+      // Reset form
       form.reset();
 
       console.log("Success:", res.status, res.text);
     })
     .catch(function (err) {
-      alert("Failed to send ❌, check console.");
+      // Remove loading state
+      formElement.classList.remove("form-loading");
+      formBtn.removeAttribute("disabled");
+      
+      // Show error toast
+      showToast(
+        "Failed to send message. Please try again or contact me directly via email.",
+        "Sending Failed",
+        "error"
+      );
+      
       console.error("Error:", err);
     });
+  
+  return false;
 }
+
