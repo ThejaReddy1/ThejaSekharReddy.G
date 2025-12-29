@@ -4,17 +4,35 @@
   #ANIMATION SYSTEM
 \*-----------------------------------*/
 
-// Page Loader
-window.addEventListener('load', function() {
+// Page Loader - Robust implementation with fallback
+function hideLoader() {
   const loader = document.getElementById('pageLoader');
-  // Minimum display time of 800ms for smooth experience
-  setTimeout(() => {
+  if (loader && !loader.classList.contains('fade-out')) {
     loader.classList.add('fade-out');
     // Remove from DOM after transition
     setTimeout(() => {
       loader.style.display = 'none';
     }, 500);
+  }
+}
+
+// Safety timeout: Always hide loader after 3 seconds maximum
+// This ensures the page is accessible even if external resources fail to load on mobile
+const loaderSafetyTimeout = setTimeout(hideLoader, 3000);
+
+// Hide loader when DOM is ready (doesn't wait for images/fonts)
+document.addEventListener('DOMContentLoaded', function () {
+  // Minimum display time of 800ms for smooth experience
+  setTimeout(() => {
+    clearTimeout(loaderSafetyTimeout);
+    hideLoader();
   }, 800);
+});
+
+// Also hide on full page load if that happens first (for desktop)
+window.addEventListener('load', function () {
+  clearTimeout(loaderSafetyTimeout);
+  setTimeout(hideLoader, 800);
 });
 
 // Scroll Reveal Animation with Intersection Observer
@@ -23,7 +41,7 @@ const observerOptions = {
   rootMargin: '0px 0px -50px 0px'
 };
 
-const scrollRevealObserver = new IntersectionObserver(function(entries) {
+const scrollRevealObserver = new IntersectionObserver(function (entries) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('revealed');
@@ -34,7 +52,7 @@ const scrollRevealObserver = new IntersectionObserver(function(entries) {
 }, observerOptions);
 
 // Observe all scroll-reveal elements
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const revealElements = document.querySelectorAll('.scroll-reveal, .fade-left, .fade-right, .scale-up');
   revealElements.forEach(el => scrollRevealObserver.observe(el));
 });
@@ -43,20 +61,20 @@ document.addEventListener('DOMContentLoaded', function() {
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
   const currentScroll = window.pageYOffset;
-  
+
   if (currentScroll > 100) {
     navbar.classList.add('scrolled');
   } else {
     navbar.classList.remove('scrolled');
   }
-  
+
   lastScroll = currentScroll;
 });
 
 // Ripple Effect on Buttons
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
   const target = e.target;
   if (target.tagName === 'BUTTON' || target.closest('button')) {
     const button = target.tagName === 'BUTTON' ? target : target.closest('button');
@@ -65,20 +83,20 @@ document.addEventListener('click', function(e) {
     const size = Math.max(rect.width, rect.height);
     const x = e.clientX - rect.left - size / 2;
     const y = e.clientY - rect.top - size / 2;
-    
+
     ripple.style.width = ripple.style.height = size + 'px';
     ripple.style.left = x + 'px';
     ripple.style.top = y + 'px';
     ripple.classList.add('ripple');
-    
+
     button.appendChild(ripple);
-    
+
     setTimeout(() => ripple.remove(), 600);
   }
 });
 
 // Skill Progress Bar Animation
-const skillObserver = new IntersectionObserver(function(entries) {
+const skillObserver = new IntersectionObserver(function (entries) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const progressBar = entry.target;
@@ -91,7 +109,7 @@ const skillObserver = new IntersectionObserver(function(entries) {
 }, { threshold: 0.5 });
 
 // Observe skill progress bars
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const skillBars = document.querySelectorAll('.skill-progress-fill');
   skillBars.forEach(bar => skillObserver.observe(bar));
 });
@@ -261,13 +279,13 @@ function showToast(message, title = '', type = 'info') {
   const container = document.getElementById('toastContainer');
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
-  
+
   const icons = {
     success: '✓',
     error: '✕',
     info: 'ℹ'
   };
-  
+
   toast.innerHTML = `
     <div class="toast-icon">${icons[type] || icons.info}</div>
     <div class="toast-content">
@@ -276,12 +294,12 @@ function showToast(message, title = '', type = 'info') {
     </div>
     <button class="toast-close" onclick="this.parentElement.classList.add('hide')" aria-label="Close">×</button>
   `;
-  
+
   container.appendChild(toast);
-  
+
   // Trigger animation
   setTimeout(() => toast.classList.add('show'), 10);
-  
+
   // Auto remove after 5 seconds
   setTimeout(() => {
     toast.classList.remove('show');
@@ -292,7 +310,7 @@ function showToast(message, title = '', type = 'info') {
 
 function sendMail(event) {
   event.preventDefault();
-  
+
   let params = {
     name: document.getElementById("fullname").value,
     email: document.getElementById("email").value,
@@ -303,7 +321,7 @@ function sendMail(event) {
   // Add loading state to form
   const formElement = document.querySelector("[data-form]");
   const formBtn = document.querySelector("[data-form-btn]");
-  
+
   formElement.classList.add("form-loading");
   formBtn.setAttribute("disabled", "");
 
@@ -313,7 +331,7 @@ function sendMail(event) {
       // Remove loading state
       formElement.classList.remove("form-loading");
       formBtn.removeAttribute("disabled");
-      
+
       // Show success toast
       showToast(
         "Your message has been sent successfully! I'll get back to you soon.",
@@ -330,17 +348,17 @@ function sendMail(event) {
       // Remove loading state
       formElement.classList.remove("form-loading");
       formBtn.removeAttribute("disabled");
-      
+
       // Show error toast
       showToast(
         "Failed to send message. Please try again or contact me directly via email.",
         "Sending Failed",
         "error"
       );
-      
+
       console.error("Error:", err);
     });
-  
+
   return false;
 }
 
