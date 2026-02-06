@@ -164,6 +164,12 @@ html {
 
 body {
   background: var(--smoky-black);
+  background-image:
+    radial-gradient(ellipse at 10% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(36, 221, 166, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(100, 100, 150, 0.02) 0%, transparent 70%);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 
@@ -176,12 +182,35 @@ body {
 
 .sidebar,
 article {
-  background: var(--eerie-black-2);
+  background: linear-gradient(135deg,
+      hsl(240, 2%, 13%) 0%,
+      hsl(240, 2%, 15%) 50%,
+      hsl(240, 2%, 12%) 100%);
   border: 1px solid var(--jet);
   border-radius: 20px;
   padding: 15px;
   box-shadow: var(--shadow-1);
   z-index: 1;
+  position: relative;
+}
+
+/* Subtle gradient border effect */
+article::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg,
+      rgba(255, 215, 0, 0.15) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(36, 221, 166, 0.1) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .separator {
@@ -710,6 +739,7 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-3);
   line-height: 1.6;
+  text-align: justify;
 }
 
 
@@ -2484,7 +2514,7 @@ textarea.form-input::-webkit-resizer {
   background: var(--bg-gradient-jet);
   border-radius: inherit;
   z-index: -1;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
 }
 
 /* Gradient border on hover */
@@ -2500,7 +2530,7 @@ textarea.form-input::-webkit-resizer {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.15s ease;
 }
 
 .service-item:hover::after {
@@ -2515,7 +2545,7 @@ textarea.form-input::-webkit-resizer {
 
 /* Icon box animation */
 .service-icon-box {
-  transition: transform 0.3s ease;
+  transition: transform 0.15s ease;
 }
 
 .service-item:hover .service-icon-box {
@@ -2524,7 +2554,7 @@ textarea.form-input::-webkit-resizer {
 
 .service-icon-box img {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-  transition: filter 0.3s ease;
+  transition: filter 0.15s ease;
 }
 
 .service-item:hover .service-icon-box img {
@@ -2537,7 +2567,7 @@ textarea.form-input::-webkit-resizer {
   font-size: var(--fs-4);
   font-weight: var(--fw-500);
   margin-bottom: 7px;
-  transition: color 0.3s ease;
+  transition: color 0.15s ease;
 }
 
 .service-item:hover .service-item-title {
